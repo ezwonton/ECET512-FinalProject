@@ -1,0 +1,16 @@
+LAST UPDATED 2.15.19
+------------------------
+
+######################################
+#                                    # 
+#         GENERIC RADIO              #
+#                                    #
+######################################
+The purpose of this container is to provide a debugging tool for grid node. The following are installed on this conatainer for your use:
+    -GNURADIO
+    -UHD
+    -X11 FORWARDING
+    -DYSECLI:
+	- can call anywhere using `dysecli`
+    -RASPBERRYPI CONTROL:
+	- can call anywhere with `client_cli.py`

@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/root/.gnuradio'
+let g:netrw_dirhist_2='/root/.grid-antenna-control-master'
+let g:netrw_dirhist_3='/usr/local/bin'
