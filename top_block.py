@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri May 24 00:11:04 2019
+# Generated: Fri May 24 00:26:26 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -39,7 +39,7 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 1E5
+        self.samp_rate = samp_rate = 1E6
 
         ##################################################
         # Blocks
@@ -96,9 +96,9 @@ class top_block(grc_wxgui.top_block_gui):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
-        self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
         self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
+        self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
+        self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
 
 
 def main(top_block_cls=top_block, options=None):
