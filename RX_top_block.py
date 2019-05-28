@@ -3,11 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-<<<<<<< HEAD
-# Generated: Fri May 24 00:26:28 2019
-=======
-# Generated: Fri May 24 00:26:26 2019
->>>>>>> 01deb153016283daaf88ae9c6b03ec96ae60a062
+# Generated: Tue May 28 23:40:08 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -20,12 +16,14 @@ if __name__ == '__main__':
         except:
             print "Warning: failed to XInitThreads()"
 
-from gnuradio import analog
 from gnuradio import eng_notation
 from gnuradio import gr
 from gnuradio import uhd
+from gnuradio import wxgui
 from gnuradio.eng_option import eng_option
+from gnuradio.fft import window
 from gnuradio.filter import firdes
+from gnuradio.wxgui import fftsink2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
 import time
@@ -45,36 +43,46 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Blocks
         ##################################################
-        self.uhd_usrp_sink_0 = uhd.usrp_sink(
+        self.wxgui_fftsink2_0 = fftsink2.fft_sink_c(
+        	self.GetWin(),
+        	baseband_freq=0,
+        	y_per_div=10,
+        	y_divs=10,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate,
+        	fft_size=1024,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title="FFT Plot",
+        	peak_hold=False,
+        )
+        self.Add(self.wxgui_fftsink2_0.win)
+        self.uhd_usrp_source_0 = uhd.usrp_source(
         	",".join(("", "")),
         	uhd.stream_args(
         		cpu_format="fc32",
         		channels=range(1),
         	),
         )
-        self.uhd_usrp_sink_0.set_samp_rate(samp_rate)
-        self.uhd_usrp_sink_0.set_center_freq(0, 0)
-        self.uhd_usrp_sink_0.set_gain(0, 0)
-        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, 1E9, 1, 0)
+        self.uhd_usrp_source_0.set_samp_rate(samp_rate)
+        self.uhd_usrp_source_0.set_center_freq(1360.25E6, 0)
+        self.uhd_usrp_source_0.set_gain(10, 0)
+        self.uhd_usrp_source_0.set_antenna("TX/RX", 0)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_sig_source_x_0, 0), (self.uhd_usrp_sink_0, 0))    
+        self.connect((self.uhd_usrp_source_0, 0), (self.wxgui_fftsink2_0, 0))    
 
     def get_samp_rate(self):
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-<<<<<<< HEAD
-        self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
-        self.uhd_usrp_sink_0.set_samp_rate(self.samp_rate)
-=======
         self.uhd_usrp_source_0.set_samp_rate(self.samp_rate)
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
-        self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
->>>>>>> 01deb153016283daaf88ae9c6b03ec96ae60a062
 
 
 def main(top_block_cls=top_block, options=None):
