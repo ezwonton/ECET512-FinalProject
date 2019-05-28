@@ -38,7 +38,7 @@
     </param>
     <param>
       <key>generate_options</key>
-      <value>wx_gui</value>
+      <value>qt_gui</value>
     </param>
     <param>
       <key>hier_block_src_path</key>
@@ -112,7 +112,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>1</value>
+      <value>0.7</value>
     </param>
     <param>
       <key>alias</key>
@@ -132,11 +132,11 @@
     </param>
     <param>
       <key>freq</key>
-      <value>1E9</value>
+      <value>1E3</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(248, 272)</value>
+      <value>(272, 48)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -168,7 +168,7 @@
     </param>
     <param>
       <key>waveform</key>
-      <value>analog.GR_SIN_WAVE</value>
+      <value>analog.GR_CONST_WAVE</value>
     </param>
   </block>
   <block>
@@ -187,7 +187,7 @@
     </param>
     <param>
       <key>center_freq0</key>
-      <value>0</value>
+      <value>1360e6</value>
     </param>
     <param>
       <key>norm_gain0</key>
@@ -195,7 +195,7 @@
     </param>
     <param>
       <key>gain0</key>
-      <value>0</value>
+      <value>25</value>
     </param>
     <param>
       <key>ant10</key>
@@ -843,7 +843,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(560, 255)</value>
+      <value>(520, 63)</value>
     </param>
     <param>
       <key>_rotation</key>
